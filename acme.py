@@ -1,13 +1,13 @@
 import random
 
-
+# create product class
 class Product:
-
-    def __init__(self, name):
+    def __init__(self, name, price=10, weight=20, flammability=0.5,
+        identifier=random.randint(1000000, 9999999)):
         self.name = name
-        self.price = 10
-        self.weight = 20
-        self.flammability = 0.5
+        self.price = price
+        self.weight = weight
+        self.flammability = flammability
         self.identifier = random.randint(1000000, 9999999)
     
     def stealability(self):
@@ -29,11 +29,14 @@ class Product:
                 return '...boom!'
 
 
+# create subclass
 class BoxingGlove(Product):
+    def __init__(self, name, weight=10):
+        super().__init__(self)
+        self.name = name
+        self.weight = weight
 
-    def __init__(self, weight=10):
-        super().__init__(name, price, flammability, identifier)
-    
+    # overwrite explode method
     def explode(self):
         return "...it's a glove."
     
@@ -45,5 +48,3 @@ class BoxingGlove(Product):
                 return 'OUCH!'
             else:
                 return 'Hey that hurt!'
-
- 
